@@ -59,7 +59,7 @@ SERVER_PORT = 5678
 CLIENT_IP = 'localhost'
 CLIENT_PORT = 6780
 
-INDEKS = 12
+INDEKS = 448700
 
 def function(queue : Queue):
     global result
