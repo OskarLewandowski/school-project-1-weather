@@ -1,0 +1,284 @@
+2023-04-05 23:48:38,720 - root - INFO - Successfully generated 361 data points for ip_addr='localhost' port=6780 indeks=12
+2023-04-05 23:48:38,722 - root - INFO - Registered localhost client successfully! # available clients: 1
+2023-04-05 23:48:47,472 - root - INFO - No clients registered
+2023-04-05 23:49:46,763 - root - INFO - Successfully generated 361 data points for ip_addr='localhost' port=6780 indeks=12
+2023-04-05 23:49:46,765 - root - INFO - Registered localhost client successfully! # available clients: 1
+2023-04-05 23:49:47,090 - root - INFO - Starting sending data
+2023-04-05 23:49:47,265 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2023-04-05 23:49:48,079 - root - INFO - Starting sending data
+2023-04-05 23:49:48,172 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2023-04-05 23:49:49,554 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2023-04-05 23:49:49,610 - root - INFO - Finished sending data
+2023-04-05 23:49:50,337 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2023-04-05 23:49:50,391 - root - INFO - Finished sending data
+2023-04-05 23:49:52,073 - root - INFO - Successfully saved the result into 12.txt file
+2023-04-05 23:50:12,191 - root - INFO - Starting sending data
+2023-04-05 23:50:12,292 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2023-04-05 23:50:14,512 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2023-04-05 23:50:14,563 - root - INFO - Finished sending data
+2023-04-05 23:50:16,830 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:21:23,867 - root - INFO - Successfully generated 25 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 00:21:23,868 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 00:21:34,369 - root - INFO - Starting sending data
+2024-04-03 00:21:34,393 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:21:36,457 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:21:36,510 - root - INFO - Finished sending data
+2024-04-03 00:21:38,545 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:23:58,724 - root - INFO - Successfully generated 25 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 00:23:58,725 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 00:24:21,398 - root - INFO - Starting sending data
+2024-04-03 00:24:21,411 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:24:23,463 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:24:23,515 - root - INFO - Finished sending data
+2024-04-03 00:24:25,513 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:25:55,587 - root - INFO - Starting sending data
+2024-04-03 00:25:55,597 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:25:57,660 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:25:57,717 - root - INFO - Finished sending data
+2024-04-03 00:25:59,720 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:26:22,896 - root - INFO - Starting sending data
+2024-04-03 00:26:22,908 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:26:24,968 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:26:25,020 - root - INFO - Finished sending data
+2024-04-03 00:26:27,026 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:27:15,326 - root - INFO - Starting sending data
+2024-04-03 00:27:15,336 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:27:17,402 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:27:17,454 - root - INFO - Finished sending data
+2024-04-03 00:27:19,468 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:28:04,703 - root - INFO - Successfully generated 25 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 00:28:04,703 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 00:28:06,491 - root - INFO - Starting sending data
+2024-04-03 00:28:06,503 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:28:08,564 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:28:08,616 - root - INFO - Finished sending data
+2024-04-03 00:28:10,664 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:30:47,122 - root - INFO - Starting sending data
+2024-04-03 00:30:47,130 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:30:49,200 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:30:49,253 - root - INFO - Finished sending data
+2024-04-03 00:30:51,296 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:31:34,402 - root - INFO - Successfully generated 25 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 00:31:34,403 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 00:31:37,516 - root - INFO - Starting sending data
+2024-04-03 00:31:37,529 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:31:39,562 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:31:39,613 - root - INFO - Finished sending data
+2024-04-03 00:31:41,639 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:32:54,967 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 00:32:54,967 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 00:32:57,021 - root - INFO - Starting sending data
+2024-04-03 00:32:57,040 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:32:59,094 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:32:59,145 - root - INFO - Finished sending data
+2024-04-03 00:33:01,171 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:34:21,254 - root - INFO - Starting sending data
+2024-04-03 00:34:21,263 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:34:23,315 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:34:23,366 - root - INFO - Finished sending data
+2024-04-03 00:34:25,382 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:34:58,400 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 00:34:58,401 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 00:35:02,528 - root - INFO - Starting sending data
+2024-04-03 00:35:02,541 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:35:04,610 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:35:04,662 - root - INFO - Finished sending data
+2024-04-03 00:35:42,904 - root - INFO - Starting sending data
+2024-04-03 00:35:42,914 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:35:44,945 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:35:44,997 - root - INFO - Finished sending data
+2024-04-03 00:35:47,034 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:47:04,380 - root - INFO - No clients registered
+2024-04-03 00:47:07,860 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 00:47:07,861 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 00:47:47,159 - root - INFO - Starting sending data
+2024-04-03 00:47:47,172 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:47:49,228 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:47:49,280 - root - INFO - Finished sending data
+2024-04-03 00:47:51,296 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:48:50,374 - root - INFO - Starting sending data
+2024-04-03 00:48:50,383 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:48:52,440 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:48:52,492 - root - INFO - Finished sending data
+2024-04-03 00:48:54,512 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:49:52,589 - root - INFO - Starting sending data
+2024-04-03 00:49:52,604 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:49:54,659 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:49:54,712 - root - INFO - Finished sending data
+2024-04-03 00:49:56,803 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:50:46,410 - root - INFO - Starting sending data
+2024-04-03 00:50:46,426 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:50:48,503 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:50:48,555 - root - INFO - Finished sending data
+2024-04-03 00:50:50,592 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:52:41,569 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 00:52:41,569 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 00:52:44,745 - root - INFO - Starting sending data
+2024-04-03 00:52:44,763 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:52:46,818 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:52:46,870 - root - INFO - Finished sending data
+2024-04-03 00:52:48,903 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:55:16,101 - root - INFO - Starting sending data
+2024-04-03 00:55:16,131 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:55:18,220 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:55:18,273 - root - INFO - Finished sending data
+2024-04-03 00:55:20,298 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 00:57:39,432 - root - INFO - Starting sending data
+2024-04-03 00:57:39,458 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 00:57:41,499 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 00:57:41,553 - root - INFO - Finished sending data
+2024-04-03 00:57:43,578 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:00:38,515 - root - INFO - Starting sending data
+2024-04-03 01:00:38,551 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:00:40,617 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:00:40,670 - root - INFO - Finished sending data
+2024-04-03 01:00:42,709 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:01:56,008 - root - INFO - No clients registered
+2024-04-03 01:04:40,041 - root - INFO - No clients registered
+2024-04-03 01:04:54,386 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:04:54,387 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:04:54,717 - root - INFO - Starting sending data
+2024-04-03 01:04:54,752 - root - ERROR - Error: Object of type int64 is not JSON serializable
+2024-04-03 01:04:54,753 - root - INFO - Finished sending data
+2024-04-03 01:05:45,053 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:05:45,057 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:05:46,202 - root - INFO - Starting sending data
+2024-04-03 01:05:46,236 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:05:48,303 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:05:48,357 - root - INFO - Finished sending data
+2024-04-03 01:05:50,408 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:09:41,220 - root - INFO - No clients registered
+2024-04-03 01:09:55,466 - root - INFO - No clients registered
+2024-04-03 01:09:55,883 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:09:55,884 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:10:05,514 - root - INFO - Starting sending data
+2024-04-03 01:10:05,549 - root - ERROR - Error: Object of type int64 is not JSON serializable
+2024-04-03 01:10:05,550 - root - INFO - Finished sending data
+2024-04-03 01:15:38,662 - root - INFO - No clients registered
+2024-04-03 01:15:39,818 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:15:39,821 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:15:49,555 - root - INFO - Starting sending data
+2024-04-03 01:15:49,575 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:15:51,663 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:15:51,717 - root - INFO - Finished sending data
+2024-04-03 01:15:53,755 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:19:03,697 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:19:03,698 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:19:04,775 - root - INFO - Starting sending data
+2024-04-03 01:19:04,820 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:19:06,882 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:19:06,934 - root - INFO - Finished sending data
+2024-04-03 01:19:08,981 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:19:36,625 - root - INFO - No clients registered
+2024-04-03 01:19:37,364 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:19:37,365 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:20:28,475 - root - INFO - No clients registered
+2024-04-03 01:20:29,692 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:20:29,692 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:21:26,414 - root - INFO - No clients registered
+2024-04-03 01:21:27,472 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:21:27,472 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:22:03,694 - root - INFO - No clients registered
+2024-04-03 01:22:04,533 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:22:04,535 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:23:42,802 - root - INFO - No clients registered
+2024-04-03 01:23:44,200 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:23:44,201 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:24:29,068 - root - INFO - No clients registered
+2024-04-03 01:24:30,565 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:24:30,567 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:24:43,282 - root - INFO - Starting sending data
+2024-04-03 01:24:43,321 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:24:45,398 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:24:45,451 - root - INFO - Finished sending data
+2024-04-03 01:24:47,492 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:25:41,357 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:25:41,357 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:25:41,569 - root - INFO - Starting sending data
+2024-04-03 01:25:41,607 - root - ERROR - Error: Object of type int64 is not JSON serializable
+2024-04-03 01:25:41,608 - root - INFO - Finished sending data
+2024-04-03 01:26:12,981 - root - INFO - No clients registered
+2024-04-03 01:26:13,515 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:26:13,516 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:26:21,343 - root - INFO - Starting sending data
+2024-04-03 01:26:21,367 - root - ERROR - Error: Object of type int64 is not JSON serializable
+2024-04-03 01:26:21,368 - root - INFO - Finished sending data
+2024-04-03 01:27:21,737 - root - INFO - No clients registered
+2024-04-03 01:27:22,586 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:27:22,586 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:27:38,656 - root - INFO - Starting sending data
+2024-04-03 01:27:38,679 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:27:40,730 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:27:40,783 - root - INFO - Finished sending data
+2024-04-03 01:27:42,800 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:31:36,945 - root - INFO - Starting sending data
+2024-04-03 01:31:36,962 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:31:39,011 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:31:39,063 - root - INFO - Finished sending data
+2024-04-03 01:31:41,098 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:36:49,026 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:36:49,027 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:36:49,860 - root - INFO - Starting sending data
+2024-04-03 01:36:49,878 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:36:51,967 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:36:52,020 - root - INFO - Finished sending data
+2024-04-03 01:37:39,768 - root - INFO - Starting sending data
+2024-04-03 01:37:39,787 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:37:41,848 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:37:41,900 - root - INFO - Finished sending data
+2024-04-03 01:37:43,912 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:39:06,620 - root - INFO - Starting sending data
+2024-04-03 01:39:06,630 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:39:08,710 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:39:08,765 - root - INFO - Finished sending data
+2024-04-03 01:39:10,795 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:42:40,213 - root - INFO - No clients registered
+2024-04-03 01:42:41,486 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:42:41,486 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:42:54,181 - root - INFO - Starting sending data
+2024-04-03 01:42:54,197 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:42:56,273 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:42:56,325 - root - INFO - Finished sending data
+2024-04-03 01:42:58,375 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:45:36,864 - root - INFO - No clients registered
+2024-04-03 01:45:40,420 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:45:40,423 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:45:53,715 - root - INFO - Starting sending data
+2024-04-03 01:45:53,760 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:45:55,917 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:45:55,968 - root - INFO - Finished sending data
+2024-04-03 01:45:57,995 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:47:49,663 - root - INFO - No clients registered
+2024-04-03 01:47:50,929 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:47:50,930 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:48:01,425 - root - INFO - Starting sending data
+2024-04-03 01:48:01,454 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:48:03,517 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:48:03,569 - root - INFO - Finished sending data
+2024-04-03 01:48:05,598 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:50:33,064 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:50:33,065 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:50:34,301 - root - INFO - Starting sending data
+2024-04-03 01:50:34,337 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:50:36,419 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:50:36,471 - root - INFO - Finished sending data
+2024-04-03 01:50:38,524 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:53:17,755 - root - INFO - No clients registered
+2024-04-03 01:53:17,924 - root - INFO - Successfully generated 7 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:53:17,924 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:53:23,373 - root - INFO - Starting sending data
+2024-04-03 01:53:23,419 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:53:25,479 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:53:25,532 - root - INFO - Finished sending data
+2024-04-03 01:54:02,012 - root - INFO - Starting sending data
+2024-04-03 01:54:02,029 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:54:04,081 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:54:04,134 - root - INFO - Finished sending data
+2024-04-03 01:54:06,205 - root - INFO - Successfully saved the result into 12.txt file
+2024-04-03 01:55:30,509 - root - INFO - Successfully generated 2881 data points for ip_addr='localhost' port=6780 indeks=12
+2024-04-03 01:55:30,509 - root - INFO - Registered localhost client successfully! # available clients: 1
+2024-04-03 01:55:38,778 - root - INFO - Starting sending data
+2024-04-03 01:55:39,247 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:6780
+2024-04-03 01:55:41,951 - urllib3.connectionpool - DEBUG - http://localhost:6780 "POST /sensor-data HTTP/1.1" 201 4
+2024-04-03 01:55:42,004 - root - INFO - Finished sending data
+2024-04-03 01:55:47,453 - root - INFO - Successfully saved the result into 12.txt file
