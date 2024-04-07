@@ -8,8 +8,8 @@
       <env name="PYTHONUNBUFFERED" value="1" />
     </envs>
     <option name="SDK_HOME" value="" />
-    <option name="SDK_NAME" value="Python 3.10 (projektNew)" />
-    <option name="WORKING_DIRECTORY" value="C:\Users\oskle\Desktop\Projekty_PRiS\projekt2024\projektNew\lab-client-oneThread" />
+    <option name="SDK_NAME" value="Python 3.10 (ProjektNew)" />
+    <option name="WORKING_DIRECTORY" value="C:\Users\Oskar\Desktop\ProjektNew\lab-client-oneThread" />
     <option name="IS_MODULE_SDK" value="false" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
