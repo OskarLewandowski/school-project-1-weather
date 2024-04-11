@@ -1,7 +1,7 @@
 import multiprocessing
 import threading
 from multiprocessing import Queue
-from multiprocessing import Process, Array, Manager, Lock
+from multiprocessing import Process, Array, Value, Lock
 
 from typing import List
 from fastapi import FastAPI
@@ -68,14 +68,15 @@ DATA_TYPES = ['HUM', 'TEMP', 'LIGHT', 'PRESS', 'PREC']
 
 
 def function(queue: Queue):
-    manager = Manager()
-    days = manager.list()
     lock = Lock()
 
     # Określamy długość Array
     result_length = 500000
     day_readings_length = 500000
     day_mode_length = 21 * 500
+
+    days = Array('b', 366)
+    daysCount = Value('i', 0)
 
     result = Array('d', result_length)
     day_readings = Array('i', day_readings_length)
@@ -84,7 +85,7 @@ def function(queue: Queue):
     number_of_workers = 4
 
     # Tworzymy procesy
-    workers = [Process(target=process, args=(queue, result, day_readings, day_mode, days, lock)) for _ in
+    workers = [Process(target=process, args=(queue, result, day_readings, day_mode, days, daysCount, lock)) for _ in
                range(number_of_workers)]
 
     for worker in workers:
@@ -94,7 +95,7 @@ def function(queue: Queue):
 
     wynik = []
 
-    for dzien in range(0, len(days)):
+    for dzien in range(0, daysCount.value):
         for type in DATA_TYPES:
             result[Help.get(type + '_AVG') + dzien * len(Help)] /= (float(day_readings[dzien]) / float(len(DATA_TYPES)))
             maksimal = 0
@@ -109,7 +110,7 @@ def function(queue: Queue):
     # wypisanie wyniku w formie w której serwer jej oczekuje
     # process zapisuje dane w tabeli pod indeksami po 20 indeksów na dzień w kolejności jak poniżej
     # ponieważ tak jest najbardziej wydajnie
-    for dd in range(0, len(days)):
+    for dd in range(0, daysCount.value):
         dzien = {'day': dd,
                  'HUM_COUNT': result[dd * len(Help) + Help.get('HUM_COUNT')],
                  'HUM_MODE': result[dd * len(Help) + Help.get('HUM_MODE')],
@@ -133,54 +134,36 @@ def function(queue: Queue):
                   json={"ip_addr": CLIENT_IP, "port": CLIENT_PORT, "indeks": INDEKS, "aggregates": wynik})
 
 
-def process(queue: Queue, result, day_readings, day_mode, days, lock: Lock):
-    local_day_readings = {}  # Dla optymalizacji, przechowujemy dane lokalnie
-    local_day_mode = {}
-    local_result_count = {}
-    local_result_sum = {}  # Dla obliczenia średniej, potrzebujemy sumy i liczby odczytów
-
+def process(queue: Queue, result, day_readings, day_mode, days, daysCount, lock: Lock):
     while True:
         if queue.empty():
             print("Kolejka jest pusta, kończenie pracy procesu...")
             break
         data = queue.get()
+        print(data)
 
-        # Przetwarzanie danych bez blokady
-        day_readings_index = data.day
-        day_mode_index = (Type[data.data_type] + data.day * len(Type)) * 21 + data.val
-
-        # Aktualizacja lokalnych zmiennych
-        local_day_readings[day_readings_index] = local_day_readings.get(day_readings_index, 0) + 1
-        local_day_mode[day_mode_index] = local_day_mode.get(day_mode_index, 0) + 1
-
-        result_count_index = Help[data.data_type + '_COUNT'] + data.day * len(Help)
-        result_avg_index = Help[data.data_type + '_AVG'] + data.day * len(Help)
-
-        local_result_count[result_count_index] = local_result_count.get(result_count_index, 0) + 1
-        local_result_sum[result_avg_index] = local_result_sum.get(result_avg_index, 0) + data.val
-
-        # Aktualizacja globalnych zmiennych w sekcji krytycznej
         with lock:
-            if data.day not in days:
-                days.append(data.day)  # Optymalizacja: unika blokady dla każdego odczytu
+            # Aktualizacja liczby odczytów dla danego dnia
+            day_readings_index = data.day
+            day_readings[day_readings_index] += 1
 
-    # Kolejna sekcja krytyczna do zapisu wyników
-    with lock:
-        for day, count in local_day_readings.items():
-            day_readings[day] += count
+            # Aktualizacja mode dla danego typu danych i dnia
+            day_mode_index = (Type[data.data_type] + data.day * len(Type)) * 21 + data.val
+            day_mode[day_mode_index] += 1
 
-        for index, count in local_day_mode.items():
-            day_mode[index] += count
+            # Aktualizacja globalnych zmiennych w sekcji krytycznej
 
-        for index, count in local_result_count.items():
-            result[index] += count
+            if not days[day_readings_index]:
+                days[day_readings_index] = True
+                with daysCount.get_lock():
+                    daysCount.value += 1
+                    print(daysCount.value)
 
-        for index, val_sum in local_result_sum.items():
-            # Tu aktualizujemy tylko sumę, średnią obliczymy po zakończeniu wszystkich operacji
-            result[index] += val_sum
-
-    # Logika do obliczenia MODE i AVG pozostaje poza tą funkcją, może być zaimplementowana
-    # na końcu, gdy wszystkie dane zostaną przetworzone.
+            # Aktualizacja wyników
+            result_count_index = Help[data.data_type + '_COUNT'] + data.day * len(Help)
+            result[result_count_index] += 1
+            result_avg_index = Help[data.data_type + '_AVG'] + data.day * len(Help)
+            result[result_avg_index] += data.val
 
 
 # nie zmieniać
