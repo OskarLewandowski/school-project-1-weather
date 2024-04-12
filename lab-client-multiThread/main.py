@@ -140,30 +140,27 @@ def process(queue: Queue, result, day_readings, day_mode, days, daysCount, lock:
             print("Kolejka jest pusta, kończenie pracy procesu...")
             break
         data = queue.get()
-        print(data)
+        # print(data)
+
+        day = data.day
+        type_index = Type[data.data_type]
+        value = data.val
+        mode_index = (type_index + day * len(Type)) * 21 + value
+        count_index = Help[data.data_type + '_COUNT'] + day * len(Help)
+        avg_index = Help[data.data_type + '_AVG'] + day * len(Help)
 
         with lock:
-            # Aktualizacja liczby odczytów dla danego dnia
-            day_readings_index = data.day
-            day_readings[day_readings_index] += 1
+            day_readings[day] += 1
+            day_mode[mode_index] += 1
 
-            # Aktualizacja mode dla danego typu danych i dnia
-            day_mode_index = (Type[data.data_type] + data.day * len(Type)) * 21 + data.val
-            day_mode[day_mode_index] += 1
-
-            # Aktualizacja globalnych zmiennych w sekcji krytycznej
-
-            if not days[day_readings_index]:
-                days[day_readings_index] = True
+            if not days[day]:
+                days[day] = True
                 with daysCount.get_lock():
                     daysCount.value += 1
-                    print(daysCount.value)
+                    # print(daysCount.value)
 
-            # Aktualizacja wyników
-            result_count_index = Help[data.data_type + '_COUNT'] + data.day * len(Help)
-            result[result_count_index] += 1
-            result_avg_index = Help[data.data_type + '_AVG'] + data.day * len(Help)
-            result[result_avg_index] += data.val
+            result[count_index] += 1
+            result[avg_index] += data.val
 
 
 # nie zmieniać
