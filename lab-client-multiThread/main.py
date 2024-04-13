@@ -94,36 +94,34 @@ def function(queue: Queue):
 
     for dzien in range(0, daysCount.value):
         for type in DATA_TYPES:
-            result[Help.get(type + '_AVG') + dzien * len(Help)] /= (float(day_readings[dzien]) / float(len(DATA_TYPES)))
+            result[Help.get(type + '_AVG') + dzien * 15] /= (float(day_readings[dzien]) / 5.0)
             maksimal = 0
             wy = 0
             for i in range(21):
-                if maksimal < day_mode[(Type.get(type) + dzien * len(Type)) * 21 + i]:
-                    maksimal = day_mode[(Type.get(type) + dzien * len(Type)) * 21 + i]
+                if maksimal < day_mode[(Type.get(type) + dzien * 5) * 21 + i]:
+                    maksimal = day_mode[(Type.get(type) + dzien * 5) * 21 + i]
                     wy = i
-            result[Help.get(type + '_MODE') + dzien * len(Help)] = wy
+            result[Help.get(type + '_MODE') + dzien * 15] = wy
 
-    # to zostaje bez zmian
     # wypisanie wyniku w formie w której serwer jej oczekuje
     # process zapisuje dane w tabeli pod indeksami po 20 indeksów na dzień w kolejności jak poniżej
-    # ponieważ tak jest najbardziej wydajnie
     for dd in range(0, daysCount.value):
         dzien = {'day': dd,
-                 'HUM_COUNT': result[dd * len(Help) + Help.get('HUM_COUNT')],
-                 'HUM_MODE': result[dd * len(Help) + Help.get('HUM_MODE')],
-                 'HUM_AVG': result[dd * len(Help) + Help.get('HUM_AVG')],
-                 'TEMP_COUNT': result[dd * len(Help) + Help.get('TEMP_COUNT')],
-                 'TEMP_MODE': result[dd * len(Help) + Help.get('TEMP_MODE')],
-                 'TEMP_AVG': result[dd * len(Help) + Help.get('TEMP_AVG')],
-                 'LIGHT_COUNT': result[dd * len(Help) + Help.get('LIGHT_COUNT')],
-                 'LIGHT_MODE': result[dd * len(Help) + Help.get('LIGHT_MODE')],
-                 'LIGHT_AVG': result[dd * len(Help) + Help.get('LIGHT_AVG')],
-                 'PRESS_COUNT': result[dd * len(Help) + Help.get('PRESS_COUNT')],
-                 'PRESS_MODE': result[dd * len(Help) + Help.get('PRESS_MODE')],
-                 'PRESS_AVG': result[dd * len(Help) + Help.get('PRESS_AVG')],
-                 'PREC_COUNT': result[dd * len(Help) + Help.get('PREC_COUNT')],
-                 'PREC_MODE': result[dd * len(Help) + Help.get('PREC_MODE')],
-                 'PREC_AVG': result[dd * len(Help) + Help.get('PREC_AVG')]}
+                 'HUM_COUNT': result[dd * 15 + 0],
+                 'HUM_MODE': result[dd * 15 + 1],
+                 'HUM_AVG': result[dd * 15 + 2],
+                 'TEMP_COUNT': result[dd * 15 + 3],
+                 'TEMP_MODE': result[dd * 15 + 4],
+                 'TEMP_AVG': result[dd * 15 + 5],
+                 'LIGHT_COUNT': result[dd * 15 + 6],
+                 'LIGHT_MODE': result[dd * 15 + 7],
+                 'LIGHT_AVG': result[dd * 15 + 8],
+                 'PRESS_COUNT': result[dd * 15 + 9],
+                 'PRESS_MODE': result[dd * 15 + 10],
+                 'PRESS_AVG': result[dd * 15 + 11],
+                 'PREC_COUNT': result[dd * 15 + 12],
+                 'PREC_MODE': result[dd * 15 + 13],
+                 'PREC_AVG': result[dd * 15 + 14]}
         wynik.append(dzien)
 
     # to zostaje bez zmian
@@ -142,9 +140,9 @@ def process(queue: Queue, result, day_readings, day_mode, daysCount, lock: Lock)
         day = data.day
         value = data.val
 
-        mode_index = (Type[data.data_type] + day * len(Type)) * 21 + value
-        count_index = Help[data.data_type + '_COUNT'] + day * len(Help)
-        avg_index = Help[data.data_type + '_AVG'] + day * len(Help)
+        mode_index = (Type[data.data_type] + day * 5) * 21 + value
+        count_index = Help[data.data_type + '_COUNT'] + day * 15
+        avg_index = Help[data.data_type + '_AVG'] + day * 15
 
         with lock:
             day_readings[day] += 1
