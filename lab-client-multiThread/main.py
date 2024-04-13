@@ -1,8 +1,6 @@
 import multiprocessing
 import threading
-from multiprocessing import Queue
-from multiprocessing import Process, Array, Value, Lock
-
+from multiprocessing import Queue, Process, Array, Value, Lock
 from typing import List
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -75,7 +73,6 @@ def function(queue: Queue):
     day_readings_length = 500000
     day_mode_length = 21 * 500
 
-    days = Array('b', 366)
     daysCount = Value('i', 0)
 
     result = Array('d', result_length)
@@ -85,7 +82,7 @@ def function(queue: Queue):
     number_of_workers = 4
 
     # Tworzymy procesy
-    workers = [Process(target=process, args=(queue, result, day_readings, day_mode, days, daysCount, lock)) for _ in
+    workers = [Process(target=process, args=(queue, result, day_readings, day_mode, daysCount, lock)) for _ in
                range(number_of_workers)]
 
     for worker in workers:
@@ -134,18 +131,18 @@ def function(queue: Queue):
                   json={"ip_addr": CLIENT_IP, "port": CLIENT_PORT, "indeks": INDEKS, "aggregates": wynik})
 
 
-def process(queue: Queue, result, day_readings, day_mode, days, daysCount, lock: Lock):
+def process(queue: Queue, result, day_readings, day_mode, daysCount, lock: Lock):
     while True:
         if queue.empty():
-            print("Kolejka jest pusta, kończenie pracy procesu...")
+            # print("Kolejka jest pusta, kończenie pracy procesu...")
             break
         data = queue.get()
         # print(data)
 
         day = data.day
-        type_index = Type[data.data_type]
         value = data.val
-        mode_index = (type_index + day * len(Type)) * 21 + value
+
+        mode_index = (Type[data.data_type] + day * len(Type)) * 21 + value
         count_index = Help[data.data_type + '_COUNT'] + day * len(Help)
         avg_index = Help[data.data_type + '_AVG'] + day * len(Help)
 
@@ -153,14 +150,11 @@ def process(queue: Queue, result, day_readings, day_mode, days, daysCount, lock:
             day_readings[day] += 1
             day_mode[mode_index] += 1
 
-            if not days[day]:
-                days[day] = True
-                with daysCount.get_lock():
-                    daysCount.value += 1
-                    # print(daysCount.value)
+            if day >= daysCount.value:
+                daysCount.value = day + 1
 
             result[count_index] += 1
-            result[avg_index] += data.val
+            result[avg_index] += value
 
 
 # nie zmieniać
