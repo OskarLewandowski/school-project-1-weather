@@ -68,16 +68,10 @@ DATA_TYPES = ['HUM', 'TEMP', 'LIGHT', 'PRESS', 'PREC']
 def function(queue: Queue):
     lock = Lock()
 
-    # Określamy długość Array
-    result_length = 500000
-    day_readings_length = 500000
-    day_mode_length = 21 * 500
-
     daysCount = Value('i', 0)
-
-    result = Array('d', result_length)
-    day_readings = Array('i', day_readings_length)
-    day_mode = Array('i', day_mode_length)
+    result = Array('d', 500000)
+    day_readings = Array('i', 500)
+    day_mode = Array('i', 10500)
 
     number_of_workers = 4
 
