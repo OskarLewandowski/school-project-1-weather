@@ -71,7 +71,7 @@ def function(queue: Queue):
     daysCount = Value('i', 0)
     result = Array('d', 500000)
     day_readings = Array('i', 500)
-    day_mode = Array('i', 10500)
+    day_mode = Array('i', 100000)
 
     number_of_workers = 4
 
