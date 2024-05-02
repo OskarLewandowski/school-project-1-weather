@@ -1,6 +1,7 @@
 import multiprocessing
 import threading
-from multiprocessing import Queue, Process, Array, Value, Lock
+from multiprocessing import Queue, Process, Array, Value
+from queue import Empty
 from typing import List
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -14,33 +15,26 @@ logging.basicConfig(handlers=[
 ],
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 
-global Help
-Help = {
-    'HUM_COUNT': 0,
-    'HUM_MODE': 1,
-    'HUM_AVG': 2,
-    'TEMP_COUNT': 3,
-    'TEMP_MODE': 4,
-    'TEMP_AVG': 5,
-    'LIGHT_COUNT': 6,
-    'LIGHT_MODE': 7,
-    'LIGHT_AVG': 8,
-    'PRESS_COUNT': 9,
-    'PRESS_MODE': 10,
-    'PRESS_AVG': 11,
-    'PREC_COUNT': 12,
-    'PREC_MODE': 13,
-    'PREC_AVG': 14,
-}
-
-global Type
-Type = {
+DATA_TYPES = {
     'HUM': 0,
     'TEMP': 1,
     'LIGHT': 2,
     'PRESS': 3,
     'PREC': 4
 }
+
+STATS = {
+    '_COUNT': 0,
+    '_MODE': 1,
+    '_AVG': 2,
+}
+
+TYPES_NUM = len(DATA_TYPES)
+STATS_NUM = len(STATS)
+PARAMS_NUM = STATS_NUM + 21
+PER_DAY_NUM = len(DATA_TYPES) * PARAMS_NUM
+
+MAX_PROCESSED_DAYS = 200
 
 
 class SensorDataEntry(BaseModel):
@@ -62,91 +56,75 @@ CLIENT_PORT = 6780
 
 INDEKS = 448700
 
-DATA_TYPES = ['HUM', 'TEMP', 'LIGHT', 'PRESS', 'PREC']
-
 
 def function(queue: Queue):
-    lock = Lock()
+    result = Array('d', MAX_PROCESSED_DAYS * PER_DAY_NUM)
+    days_num = Value('i', 0)
 
-    daysCount = Value('i', 0)
-    result = Array('d', 500000)
-    day_readings = Array('i', 500)
-    day_mode = Array('i', 100000)
+    number_of_wokers = 4
+    workers = [Process(target=process, args=(queue, result, days_num)) for _ in range(0, number_of_wokers)]
 
-    number_of_workers = 4
+    for w in workers:
+        w.start()
+    for w in workers:
+        w.join()
 
-    # Tworzymy procesy
-    workers = [Process(target=process, args=(queue, result, day_readings, day_mode, daysCount, lock)) for _ in
-               range(number_of_workers)]
-
-    for worker in workers:
-        worker.start()
-    for worker in workers:
-        worker.join()
-
-    wynik = []
-
-    for dzien in range(0, daysCount.value):
+    for day in range(0, days_num.value + 1):
         for type in DATA_TYPES:
-            result[Help.get(type + '_AVG') + dzien * 15] /= (float(day_readings[dzien]) / 5.0)
-            maksimal = 0
-            wy = 0
+            base_index = day * PER_DAY_NUM + DATA_TYPES[type] * PARAMS_NUM
+            result[base_index + STATS['_AVG']] /= result[base_index + STATS['_COUNT']]
+            max_count = 0
+            max_value = 0
             for i in range(21):
-                if maksimal < day_mode[(Type.get(type) + dzien * 5) * 21 + i]:
-                    maksimal = day_mode[(Type.get(type) + dzien * 5) * 21 + i]
-                    wy = i
-            result[Help.get(type + '_MODE') + dzien * 15] = wy
+                if max_count < result[base_index + STATS_NUM + i]:
+                    max_count = result[base_index + STATS_NUM + i]
+                    max_value = i
+            result[base_index + STATS['_MODE']] = max_value
 
-    # wypisanie wyniku w formie w której serwer jej oczekuje
-    # process zapisuje dane w tabeli pod indeksami po 20 indeksów na dzień w kolejności jak poniżej
-    for dd in range(0, daysCount.value):
-        dzien = {'day': dd,
-                 'HUM_COUNT': result[dd * 15 + 0],
-                 'HUM_MODE': result[dd * 15 + 1],
-                 'HUM_AVG': result[dd * 15 + 2],
-                 'TEMP_COUNT': result[dd * 15 + 3],
-                 'TEMP_MODE': result[dd * 15 + 4],
-                 'TEMP_AVG': result[dd * 15 + 5],
-                 'LIGHT_COUNT': result[dd * 15 + 6],
-                 'LIGHT_MODE': result[dd * 15 + 7],
-                 'LIGHT_AVG': result[dd * 15 + 8],
-                 'PRESS_COUNT': result[dd * 15 + 9],
-                 'PRESS_MODE': result[dd * 15 + 10],
-                 'PRESS_AVG': result[dd * 15 + 11],
-                 'PREC_COUNT': result[dd * 15 + 12],
-                 'PREC_MODE': result[dd * 15 + 13],
-                 'PREC_AVG': result[dd * 15 + 14]}
-        wynik.append(dzien)
+    final_result = []
+    for dd in range(0, days_num.value + 1):
+        day = {'day': dd,
+               'HUM_COUNT': result[dd * PER_DAY_NUM + DATA_TYPES.get('HUM') * PARAMS_NUM + STATS.get('_COUNT')],
+               'HUM_MODE': result[dd * PER_DAY_NUM + DATA_TYPES.get('HUM') * PARAMS_NUM + STATS.get('_MODE')],
+               'HUM_AVG': result[dd * PER_DAY_NUM + DATA_TYPES.get('HUM') * PARAMS_NUM + STATS.get('_AVG')],
+               'TEMP_COUNT': result[dd * PER_DAY_NUM + DATA_TYPES.get('TEMP') * PARAMS_NUM + STATS.get('_COUNT')],
+               'TEMP_MODE': result[dd * PER_DAY_NUM + DATA_TYPES.get('TEMP') * PARAMS_NUM + STATS.get('_MODE')],
+               'TEMP_AVG': result[dd * PER_DAY_NUM + DATA_TYPES.get('TEMP') * PARAMS_NUM + STATS.get('_AVG')],
+               'LIGHT_COUNT': result[dd * PER_DAY_NUM + DATA_TYPES.get('LIGHT') * PARAMS_NUM + STATS.get('_COUNT')],
+               'LIGHT_MODE': result[dd * PER_DAY_NUM + DATA_TYPES.get('LIGHT') * PARAMS_NUM + STATS.get('_MODE')],
+               'LIGHT_AVG': result[dd * PER_DAY_NUM + DATA_TYPES.get('LIGHT') * PARAMS_NUM + STATS.get('_AVG')],
+               'PRESS_COUNT': result[dd * PER_DAY_NUM + DATA_TYPES.get('PRESS') * PARAMS_NUM + STATS.get('_COUNT')],
+               'PRESS_MODE': result[dd * PER_DAY_NUM + DATA_TYPES.get('PRESS') * PARAMS_NUM + STATS.get('_MODE')],
+               'PRESS_AVG': result[dd * PER_DAY_NUM + DATA_TYPES.get('PRESS') * PARAMS_NUM + STATS.get('_AVG')],
+               'PREC_COUNT': result[dd * PER_DAY_NUM + DATA_TYPES.get('PREC') * PARAMS_NUM + STATS.get('_COUNT')],
+               'PREC_MODE': result[dd * PER_DAY_NUM + DATA_TYPES.get('PREC') * PARAMS_NUM + STATS.get('_MODE')],
+               'PREC_AVG': result[dd * PER_DAY_NUM + DATA_TYPES.get('PREC') * PARAMS_NUM + STATS.get('_AVG')]}
+        final_result.append(day)
 
-    # to zostaje bez zmian
     requests.post(f"http://{SERVER_IP}:{SERVER_PORT}/results",
-                  json={"ip_addr": CLIENT_IP, "port": CLIENT_PORT, "indeks": INDEKS, "aggregates": wynik})
+                  json={"ip_addr": CLIENT_IP, "port": CLIENT_PORT, "indeks": INDEKS, "aggregates": final_result})
 
 
-def process(queue: Queue, result, day_readings, day_mode, daysCount, lock: Lock):
+def process(queue: Queue, result: Array, days_num: Value):
     while True:
-        if queue.empty():
-            # print("Kolejka jest pusta, kończenie pracy procesu...")
+        try:
+            data = queue.get(timeout=0.0001)
+        except Empty:
             break
-        data = queue.get()
-        # print(data)
 
-        day = data.day
-        value = data.val
+        base_index = data.day * PER_DAY_NUM + DATA_TYPES[data.data_type] * PARAMS_NUM
+        with result.get_lock():
+            result[base_index + STATS['_COUNT']] += 1
+        with result.get_lock():
+            result[base_index + STATS['_AVG']] += data.val
+        with result.get_lock():
+            result[base_index + STATS_NUM + data.val] += 1
 
-        mode_index = (Type[data.data_type] + day * 5) * 21 + value
-        count_index = Help[data.data_type + '_COUNT'] + day * 15
-        avg_index = Help[data.data_type + '_AVG'] + day * 15
+        with days_num.get_lock():
+            if data.day > days_num.value:
+                days_num.value = data.day
 
-        with lock:
-            day_readings[day] += 1
-            day_mode[mode_index] += 1
-
-            if day >= daysCount.value:
-                daysCount.value = day + 1
-
-            result[count_index] += 1
-            result[avg_index] += value
+    return result
 
 
 # nie zmieniać
